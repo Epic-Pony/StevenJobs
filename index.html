@@ -1,0 +1,152 @@
+<!--
+ * @Description: DearJobs
+ * @Author: Pony
+ * @Date: 2021-10-07 02:06:11
+ * @LastEditors: Pony
+ * @LastEditTime: 2021-10-07 03:18:13
+ * @FilePath: /StevenJobs/index.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="/assets/apple.png" type="image/x-icon">
+    <title>DearJobs</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+            box-sizing: border-box;
+        }
+
+        #app {
+            width: 990px;
+            height: 100vh;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            box-shadow: rgba(0, 0, 0, 0.3) 0 1px 3px;
+        }
+
+        #app video {
+            width: 100%;
+            height: auto;
+        }
+
+        .cover {
+            width: 100%;
+            line-height: 0;
+            position: relative;
+        }
+
+        .start {
+            /* width: 20vw; */
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 26;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .mainTitle {
+            height: 60px;
+            aspect-ratio: auto 167 / 60;
+            width: 167px;
+            margin-bottom: 16px;
+        }
+
+        .subTitle {
+            height: 37px;
+            aspect-ratio: auto 372 / 37;
+            width: 372px;
+
+        }
+
+        #messagesHeader {
+            flex: 1 1;
+            width: 990px;
+            margin: 0 auto;
+            padding: 100px 0px 60px 0px;
+            text-align: center;
+            border-bottom: 1px solid #CFCFCF;
+
+        }
+
+        h1 {
+            margin-bottom: 8px;
+        }
+
+        a {
+            color: #08c;
+            text-decoration: none;
+        }
+
+        #messagesHeader p {
+            font-size: 14px;
+            line-height: 1.5;
+            font: 12px/18px "Lucida Grande", "Lucida Sans Unicode", Helvetica, Arial, Verdana, sans-serif;
+        }
+        .apple {
+            width: 90px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            opacity: 0;
+            /* z-index: 28; */
+        }
+        .start:hover .apple {
+            opacity: 0.7;
+            transition: all ease-in 500ms;
+        }
+        .play {
+            opacity: 0;
+            transition: all ease-in-out 600ms;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <div class="cover">
+            <video src="https://aodour.oss-ap-southeast-1.aliyuncs.com/Frontend/chunk/js/OurDearSteve_2021.mp4" id="movie"></video>
+            <div class="start">
+                <img src="/assets/title.png" alt="Steve Jobs 1955-2011" class="mainTitle">
+                <img src="/assets/footer-text-removebg-preview.png"
+                    alt="Steve touched all of our lives in so many ways.  Thank you for sharing your thoughts and remeberances."
+                    class="subTitle">
+                <img src="/assets/apple.png" alt="Apple" class="apple">
+            </div>
+            
+        </div>
+        <div id="messagesHeader">
+            <h1><img src="/assets/remembering-steve-removebg-preview.png" height="48" width="433"
+                    alt="Remembering Steve"> </h1>
+            <p id="emailCallout" class="footnote">Over a million people from all over the world have shared their
+                memories, thoughts, and feelings about Steve. One thing they all have in common — from personal
+                friends to colleagues to owners of Apple products — is how they’ve been touched by his passion and
+                creativity. You can view some of these messages below.<br> And share your own at <a
+                    href="mailto:rememberingsteve@apple.com">rememberingsteve@apple.com</a></p>
+        </div>
+    </div>
+    <script>
+        let playBtn = document.querySelector('.start');
+        let movie = document.querySelector('#movie');
+        playBtn.onclick = () => {
+            movie.play();
+            let classVal = playBtn.getAttribute("class");
+            classVal = classVal.concat(" play");
+            playBtn.setAttribute("class",classVal );
+        }
+    </script>
+</body>
+
+</html>
