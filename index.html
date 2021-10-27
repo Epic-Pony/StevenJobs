@@ -3,7 +3,7 @@
  * @Author: Pony
  * @Date: 2021-10-07 02:06:11
  * @LastEditors: Pony
- * @LastEditTime: 2021-10-07 03:28:24
+ * @LastEditTime: 2021-10-27 23:27:21
  * @FilePath: /StevenJobs/index.html
 -->
 <!DOCTYPE html>
@@ -56,6 +56,10 @@
             align-items: center;
         }
 
+        .stop {
+            display: none;
+        }
+
         .mainTitle {
             height: 60px;
             aspect-ratio: auto 167 / 60;
@@ -94,6 +98,7 @@
             line-height: 1.5;
             font: 12px/18px "Lucida Grande", "Lucida Sans Unicode", Helvetica, Arial, Verdana, sans-serif;
         }
+
         .apple {
             width: 90px;
             position: absolute;
@@ -103,13 +108,33 @@
             opacity: 0;
             /* z-index: 28; */
         }
+
         .start:hover .apple {
             opacity: 0.7;
             transition: all ease-in 500ms;
         }
-        .play {
+
+        .play .mainTitle,
+        .play .subTitle {
             opacity: 0;
             transition: all ease-in-out 600ms;
+        }
+
+        @media (max-width: 450px) {
+            #app {
+                width: 100%;
+            }
+
+            #messagesHeader {
+                width: 100%;
+                padding: 100px 8px 8px;
+            }
+
+            h1 img {
+                width: 80vw;
+                height: auto;
+
+            }
         }
     </style>
 </head>
@@ -117,15 +142,15 @@
 <body>
     <div id="app">
         <div class="cover">
-            <video src="https://aodour.oss-ap-southeast-1.aliyuncs.com/Frontend/chunk/js/OurDearSteve_2021.mp4" id="movie"></video>
+            <video src="https://aodour.oss-ap-southeast-1.aliyuncs.com/Frontend/chunk/js/OurDearSteve_2021.mp4"
+                id="movie"></video>
             <div class="start">
                 <img src="/StevenJobs/assets/title.png" alt="Steve Jobs 1955-2011" class="mainTitle">
                 <img src="/StevenJobs/assets/footer-text-removebg-preview.png"
                     alt="Steve touched all of our lives in so many ways.  Thank you for sharing your thoughts and remeberances."
                     class="subTitle">
-                <img src="/StevenJobs/assets/apple.png" alt="Apple" class="apple">
+                <img src="/assets/apple.png" alt="Apple" class="apple">
             </div>
-            
         </div>
         <div id="messagesHeader">
             <h1><img src="/StevenJobs/assets/remembering-steve-removebg-preview.png" height="48" width="433"
@@ -141,10 +166,15 @@
         let playBtn = document.querySelector('.start');
         let movie = document.querySelector('#movie');
         playBtn.onclick = () => {
-            movie.play();
-            let classVal = playBtn.getAttribute("class");
-            classVal = classVal.concat(" play");
-            playBtn.setAttribute("class",classVal );
+            if (movie.paused) {
+                movie.play();
+                // let classVal = playBtn.getAttribute("class");
+                // classVal = classVal.concat(" play");
+                playBtn.setAttribute("class", 'start play');
+            } else {
+                movie.pause();
+                playBtn.setAttribute("class", 'start');
+            }
         }
     </script>
 </body>
